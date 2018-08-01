@@ -17,19 +17,9 @@ import Book from './Book'
   //
 class BooksApp extends React.Component {
   state = {
-    allBooks: [],
     wantToRead: [],
     currentlyReading:[],
     read: [],
-    testArr:[{
-      author:'Reeta Skeeter',
-      title: 'Albus Dumboldore Hero or Villain?'
-    },
-    {
-      author:'Hermione Granger',
-      title:'my adventures with Potter'
-    }
-  ],    
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -38,33 +28,28 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false
   }
+
   componentDidMount() {
     BooksAPI.getAll().then((res)=> {
-      this.setState({
-        allBooks: res}
-      // res.map((book)=> {
-        // switch (book.shelf) {
-        //   case "wantToRead":
-        //     this.setState((state)=>{
-        //       this.state.wantToRead.push(book);
-        //     });
-        //     break;
-        //   case "currentlyReading":
-        //     this.setState((state)=>{
-        //       this.state.currentlyReading.push(book);
-        //     });
-        //     break;
-        //   case "read":
-        //     this.setState((state)=>{
-        //       this.state.read.push(book);
-        //     });
-        //     break;
-        // }
-        // })
-      
-    )
-      console.log(this.state)
-      // console.log(this.state.currentlyReading)
+      res.map((book)=> {
+        switch (book.shelf) {
+          case "wantToRead":
+            this.setState((state)=>{
+              this.state.wantToRead.push(book);
+            });
+            break;
+          case "currentlyReading":
+            this.setState((state)=>{
+              this.state.currentlyReading.push(book);
+            });
+            break;
+          case "read":
+            this.setState((state)=>{
+              this.state.read.push(book);
+            });
+            break;
+        }
+      })
     })
   }
   
@@ -105,19 +90,6 @@ class BooksApp extends React.Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                    {/* <li>
-                      {this.state.testArr.map((book)=> {
-                        return (<Book author={book.author} title={book.title}/>)
-                      })}
-                    </li> */}
-                    <li>
-                      {this.state.allBooks.filter((book)=>{
-                        return book.shelf === 'currentlyReading'
-                      }).map((book)=> {
-                        console.log(book)
-                        return (<Book author={book.authors[0]} title={book.title} url={book.imageLinks.smallThumbnail}/>)
-                      })}
-                    </li>
                       <li>
                         <div className="book">
                           <div className="book-top">
