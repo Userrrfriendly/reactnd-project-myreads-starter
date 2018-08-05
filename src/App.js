@@ -7,17 +7,16 @@ import SearchScreen from './SearchScreen'
 
 class BooksApp extends React.Component {
   state = {
-    allBooks: [],
+    allBooks: []
   }
+
   componentDidMount() {
     BooksAPI.getAll().then((res)=> {
       this.setState({allBooks: res})
     })
   }
   
-  ChangeBookShelf = (book, shelf, target)=> {
-    // console.log(book, shelf);
-
+  changeBookShelf = (book, shelf)=> {
     BooksAPI.update(book,shelf).then(()=>{
       BooksAPI.getAll().then((res)=> {
         this.setState(
@@ -30,17 +29,31 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route exact path="/" render={()=> 
-          (
+        <Route exact path="/" render={()=> (
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
               <div>
-                <Bookshelf onChangeShelf = {this.ChangeBookShelf} shelfDisplayName='Currently Reading' shelf='currentlyReading' books={this.state.allBooks}/>
-                <Bookshelf onChangeShelf = {this.ChangeBookShelf} shelfDisplayName='Want to Read' shelf='wantToRead' books={this.state.allBooks}/>
-                <Bookshelf onChangeShelf = {this.ChangeBookShelf} shelfDisplayName='Read' shelf='read' books={this.state.allBooks}/>
+                <Bookshelf
+                onChangeShelf = {this.changeBookShelf}
+                shelfDisplayName='Currently Reading'
+                shelf='currentlyReading'
+                books={this.state.allBooks}
+                />
+                <Bookshelf
+                onChangeShelf = {this.changeBookShelf}
+                shelfDisplayName='Want to Read'
+                shelf='wantToRead'
+                books={this.state.allBooks}
+                />
+                <Bookshelf
+                onChangeShelf = {this.changeBookShelf}
+                shelfDisplayName='Read'
+                shelf='read'
+                books={this.state.allBooks}
+                />
               </div>
             </div>
             <div className="open-search">
@@ -53,7 +66,10 @@ class BooksApp extends React.Component {
         }/>
         <Route path="/search" render={()=>
           (
-            <SearchScreen onChangeShelf = {this.ChangeBookShelf} library={this.state.allBooks}/>
+          <SearchScreen
+            onChangeShelf = {this.changeBookShelf}
+            library={this.state.allBooks}
+            />
           )
         }/>
       </div>
