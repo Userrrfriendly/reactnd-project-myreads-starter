@@ -94,3 +94,4 @@ For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 # Contributing
 My dependancies:
 * installed proptypes
+* installed react router-dom
