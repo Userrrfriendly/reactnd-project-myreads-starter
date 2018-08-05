@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link, Route } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
-import Bookshelf from './Bookshelf'
-import SearchScreen from './SearchScreen'
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import * as BooksAPI from './BooksAPI';
+import './App.css';
+import Bookshelf from './Bookshelf';
+import SearchScreen from './SearchScreen';
 
 class BooksApp extends React.Component {
   state = {
@@ -67,9 +67,9 @@ class BooksApp extends React.Component {
         <Route path="/search" render={()=>
           (
           <SearchScreen
-            onChangeShelf = {this.changeBookShelf}
-            library={this.state.allBooks}
-            />
+          onChangeShelf = {this.changeBookShelf}
+          library={this.state.allBooks}
+          />
           )
         }/>
       </div>

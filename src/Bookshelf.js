@@ -1,8 +1,7 @@
-import React from 'react'
-import Book from './Book'
-import PropTypes from 'prop-types'
+import React from 'react';
+import Book from './Book';
+import PropTypes from 'prop-types';
 
-//{/* <Bookshelf shelfDisplayName='Currently Reading' shelf='currentlyReading' books={this.state.allBooks}/> */}
 function Bookshelf(props) {
     return (
         <div className="bookshelf">
@@ -18,9 +17,9 @@ function Bookshelf(props) {
                             book= {book}
                             shelf={book.shelf}
                             onChangeShelf= {props.onChangeShelf}
-                            author= {book.authors ? book.authors: "no author"}
+                            author= {book.authors}
                             title={book.title}
-                            url={book.imageLinks ? book.imageLinks.smallThumbnail: './no-preview128px.png'}
+                            url={book.imageLinks}
                             />
                         </li>
                     )

@@ -1,9 +1,15 @@
-import React from 'react'
-import * as BooksAPI from './BooksAPI'
+import React from 'react';
+import * as BooksAPI from './BooksAPI';
 import Book from './Book';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class SearchScreen extends React.Component {
+    static propTypes = {
+        onChangeShelf: PropTypes.func.isRequired,
+        library: PropTypes.array.isRequired
+    }
+
     state= {
         query: "",
         searchResults: []
@@ -53,9 +59,9 @@ class SearchScreen extends React.Component {
                                 book={book}
                                 shelf={tempShelf.length > 0 ? tempShelf[0].shelf : 'none'}
                                 onChangeShelf= {this.props.onChangeShelf}
-                                author={book.authors ? book.authors : 'No author'}
+                                author={book.authors}
                                 title={book.title}
-                                url={book.imageLinks ? book.imageLinks.smallThumbnail: './no-preview128px.png'}
+                                url={book.imageLinks}
                                 />
                             </li>
                             )
@@ -67,9 +73,4 @@ class SearchScreen extends React.Component {
     }
 }
 
-/*TODO:
-    *Short the search resaults && books in library
-    *Update PropTypes for all the components
-    *Refactor Books component so it will decide about autor and url validity
-*/
 export default SearchScreen
