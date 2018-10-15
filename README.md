@@ -3,7 +3,8 @@
 This is the 7nth project for Udacity's Front End Developer NanoDegree (Part 5 Building with React).
 The app is consisted of a collection of books that are placed on three bookshelfs (currently reading, want to read & read) the user can move the books from one shelf to another, remove a book completely from the library, search for books and add new books to the library. The app uses **Udacitys** *Book Lender API!*. [Create React App](https://github.com/facebookincubator/create-react-app) was used to bootstrap the project.
 
-
+## Live Version: 
+[My Reads Live Version](https://userrrfriendly.github.io/reactnd-project-myreads-starter/)
 ## How to install & run the app:
 * Clone or download this repository 
 * Use the command line to navigate to the reactnd-project-myreads-starter directory and run `npm install` to install the app
